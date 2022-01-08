@@ -1,0 +1,31 @@
+body {
+    background: rgb(197,41,6);
+    background: linear-gradient(205deg, rgba(197,41,6,1) 0%, rgba(212,167,6,1) 49%, rgba(227,151,110,1) 100%);
+}
+
+.scrollable-block {
+    position: relative;
+    display: block;
+    overflow: auto;
+    height: 70vh;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 1px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+p {
+    display: inline-block;
+    padding-bottom: 0;
+}

@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: ${SENTENCE_BUILDER_API_POSTGRES_URL}
+    username: ${SENTENCE_BUILDER_API_POSTGRES_USER}
+    password: ${SENTENCE_BUILDER_API_POSTGRES_PASS}
+  data:
+    mongodb:
+      uri: ${SENTENCE_BUILDER_MONGODB_URL}
+
+  freemarker:
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+  web:
+    resources:
+      static-locations: classpath:/static
+
+admin:
+  username: ${SENTENCE_BUILDER_API_USERNAME}
+  password: ${SENTENCE_BUILDER_API_PASSWORD}
