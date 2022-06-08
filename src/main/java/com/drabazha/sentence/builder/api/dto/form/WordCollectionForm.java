@@ -13,7 +13,5 @@ import java.util.List;
 @Builder
 public class WordCollectionForm {
 
-    private String speechPart;
-
     private List<WordForm> words;
 }

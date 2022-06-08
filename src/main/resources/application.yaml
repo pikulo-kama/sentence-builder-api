@@ -7,13 +7,18 @@ spring:
     mongodb:
       uri: ${SENTENCE_BUILDER_MONGODB_URL}
 
-  freemarker:
-    suffix: .ftl
-    template-loader-path: classpath:/templates/
-  web:
-    resources:
-      static-locations: classpath:/static
-
 admin:
   username: ${SENTENCE_BUILDER_API_USERNAME}
   password: ${SENTENCE_BUILDER_API_PASSWORD}
+
+jwt:
+  secret: ${SENTENCE_BUILDER_API_JWT_SECRET}
+  lifetime: 24
+
+api:
+  private: /api/v2
+  public: /api/v1
+
+cors:
+  origins: ${SENTENCE_BUILDER_API_ORIGINS}
+  methods: GET, POST, DELETE, OPTIONS

@@ -1,0 +1,15 @@
+.login__container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.login__form {
+    position: absolute;
+    display: grid;
+    gap: 1rem;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 5rem;
+    width: 30rem;
+}
