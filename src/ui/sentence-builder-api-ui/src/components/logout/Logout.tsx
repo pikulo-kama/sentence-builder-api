@@ -30,12 +30,14 @@ const Logout = () => {
                     </SecondaryButton> :
                     <div className='logout__container'>
                         <h3>Do you really want to log out?</h3>
-                        <PrimaryButton
-                            onClick={handleLogout}
-                        >Yes</PrimaryButton>
-                        <SecondaryButton
-                            onClick={() => setShowConfirm(false)}
-                        >No</SecondaryButton>
+                        <div className="logout__buttons">
+                            <PrimaryButton
+                                onClick={handleLogout}
+                            >Yes</PrimaryButton>
+                            <SecondaryButton
+                                onClick={() => setShowConfirm(false)}
+                            >No</SecondaryButton>
+                        </div>
                     </div>
             }
         </>

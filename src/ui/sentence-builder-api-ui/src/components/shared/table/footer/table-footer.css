@@ -1,11 +1,17 @@
 .table-footer__container {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: end;
 }
 
 .table-footer__add-btn {
-    margin: .3rem 0 0 .3rem;
-    position: absolute;
-    bottom: -3rem;
-    left: -3rem;
-    z-index: 1;
+    margin: 0 0 .3rem .3rem!important;
+}
+
+@media screen and (max-width: 800px){
+    .table-footer__add-btn {
+        font-size: .6rem!important;
+    }
 }

@@ -51,3 +51,11 @@ header {
     transform: translateY(-50%);
     margin-right: .4rem;
 }
+
+@media screen and (max-width: 475px) {
+    .header__logo-box {
+        left: 0;
+        transform: none;
+        margin-left: .4rem;
+    }
+}
