@@ -13,8 +13,10 @@ root.render(
     <Provider store={store}>
         <BrowserRouter>
             <Routes>
+                {/*Public Routes*/}
                 <Route path='/login' element={<Login/>}/>
 
+                {/*Private Routes*/}
                 <Route element={<RequireAuth />}>
                     <Route path='/*' element={<App/>}/>
                 </Route>

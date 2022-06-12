@@ -1,5 +1,5 @@
-import {styled} from "@mui/material";
-import PrimaryButton from "./PrimaryButton";
+import {styled} from "@mui/material"
+import PrimaryButton from "./PrimaryButton"
 
 const SecondaryButton = styled(PrimaryButton)({
     color: 'var(--color-black)',

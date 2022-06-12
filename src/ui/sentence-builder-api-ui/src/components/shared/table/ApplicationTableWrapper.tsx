@@ -22,25 +22,23 @@ const ApplicationTableWrapper = (props: ApplicationTableWrapperProps) => {
 
     const [isCreateFormActive, setCreateFormActive] = useState(false)
 
-    let component
-
-    if (!isLoading) {
-        component = isCreateFormActive ?
-            <FormWrapper
-                closeFormCallback={() => setCreateFormActive(false)}
-                form={form}
-                formProps={formProps}
-            /> :
-            <ApplicationTable
-                {...props}
-                rows={rowsFormatter(rows)}
-                addBtnCallback={() => setCreateFormActive(true)}
-            />
+    if (isLoading) {
+        return <Loading />
     }
 
     return (
         <>
-            {isLoading ? <Loading/> : component}
+            {isCreateFormActive ?
+                <FormWrapper
+                    closeFormCallback={() => setCreateFormActive(false)}
+                    form={form}
+                    formProps={formProps}
+                /> :
+                <ApplicationTable
+                    {...props}
+                    rows={rowsFormatter(rows)}
+                    addBtnCallback={() => setCreateFormActive(true)}
+                />}
         </>
     )
 }

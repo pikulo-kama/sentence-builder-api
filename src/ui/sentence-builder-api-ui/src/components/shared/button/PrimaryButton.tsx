@@ -1,4 +1,4 @@
-import {Button, styled} from "@mui/material";
+import {Button, styled} from "@mui/material"
 
 const PrimaryButton = styled(Button)({
     height: '1.5rem',

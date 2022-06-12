@@ -1,11 +1,11 @@
-import {Button} from "@mui/material";
+import {Button} from "@mui/material"
 import '../shared/form/form-wrapper.css'
 import './schema-form.css'
-import {defaultWordType, WordType, WordTypeResponse} from "../../types/word-type";
-import WordTypeSelect from "../shared/select/WordTypeSelect";
-import {useState} from "react";
-import PrimaryButton from "../shared/button/PrimaryButton";
-import {useCreateSchemaMutation} from "../../api/schema-api-slice";
+import {defaultWordType, WordType, WordTypeResponse} from "../../types/word-type"
+import WordTypeSelect from "../shared/select/WordTypeSelect"
+import {useState} from "react"
+import PrimaryButton from "../shared/button/PrimaryButton"
+import {useCreateSchemaMutation} from "../../api/schema-api-slice"
 
 interface SchemaFormProps {
     wordTypes: WordTypeResponse
@@ -34,7 +34,7 @@ const SchemaForm = ({wordTypes}: SchemaFormProps) => {
     const handleSaveSchema = () => {
 
         let schemaWordFormList = schemaWordTypes.map((type, idx) =>
-            ({wordTypeId: type.wordTypeId, wordOrder: idx}));
+            ({wordTypeId: type.wordTypeId, wordOrder: idx}))
 
         createSchema({words: schemaWordFormList})
 

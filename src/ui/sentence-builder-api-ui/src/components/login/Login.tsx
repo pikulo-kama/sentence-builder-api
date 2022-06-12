@@ -1,13 +1,13 @@
-import Header from "../header/Header";
-import {TextField} from "@mui/material";
+import Header from "../header/Header"
+import {TextField} from "@mui/material"
 import './login.css'
-import React, {FormEvent, useState} from "react";
-import PrimaryButton from "../shared/button/PrimaryButton";
-import {useLoginMutation} from "../../api/auth-api-slice";
-import {LoginForm} from "../../types/auth";
-import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {setCredentials} from "../../features/auth/auth-slice";
+import React, {FormEvent, useState} from "react"
+import PrimaryButton from "../shared/button/PrimaryButton"
+import {useLoginMutation} from "../../api/auth-api-slice"
+import {LoginForm} from "../../types/auth"
+import {useNavigate} from "react-router-dom"
+import {useDispatch} from "react-redux"
+import {setCredentials} from "../../features/auth/auth-slice"
 
 const Login = () => {
 

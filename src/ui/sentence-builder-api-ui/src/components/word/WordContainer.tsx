@@ -2,9 +2,8 @@ import {useDeleteWordMutation, useGetAllWordsQuery} from "../../api/word-api-sli
 import {GridColDef} from "@mui/x-data-grid";
 import ApplicationTableWrapper from "../shared/table/ApplicationTableWrapper";
 import WordForm from "./WordForm";
-import {Word, WordList} from "../../types/word";
+import {Word} from "../../types/word";
 import {WordTypeProps} from "../word-type/types";
-import {SchemaResponse} from "../../types/schema";
 
 
 const columns: GridColDef[] = [
@@ -32,20 +31,12 @@ const WordContainer = ({ wordTypes, isLoading }: WordContainerProps) => {
         records.forEach(record => deleteWord({wordContent: record.content}))
     }
 
-    let rows: Word[] = []
-
-    if (words) {
-        rows = words.responseData.wordResponseList
-    }
-
-    console.log(rows)
-
     return (
-        <div>
+        <section>
             {
                 <ApplicationTableWrapper
                     columns={columns}
-                    rows={rows}
+                    rows={words?.responseData?.wordResponseList || []}
                     getRowId={(row: any) => row.content}
                     pageSize={10}
                     tableName='Words'
@@ -60,7 +51,7 @@ const WordContainer = ({ wordTypes, isLoading }: WordContainerProps) => {
                     }}
                 />
             }
-        </div>
+        </section>
     )
 }
 

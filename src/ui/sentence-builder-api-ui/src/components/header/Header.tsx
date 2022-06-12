@@ -1,5 +1,5 @@
 import './header.css'
-import Logout from "../logout/Logout";
+import Logout from "../logout/Logout"
 
 interface HeaderProps {
     showLogout?: boolean

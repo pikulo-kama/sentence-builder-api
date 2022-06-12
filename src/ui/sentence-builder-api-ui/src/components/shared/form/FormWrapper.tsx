@@ -1,4 +1,4 @@
-import PrimaryButton from "../button/PrimaryButton";
+import PrimaryButton from "../button/PrimaryButton"
 import './form-wrapper.css'
 
 interface FormWrapperProps {
@@ -15,7 +15,7 @@ const FormWrapper = (props: FormWrapperProps) => {
         formProps
     } = props
 
-    const Form = form;
+    const Form = form
 
     return (
         <div className='container form-wrapper__container'>

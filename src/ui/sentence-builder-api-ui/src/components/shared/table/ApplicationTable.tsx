@@ -4,11 +4,11 @@ import {
     GridCallbackDetails,
     GridColumnHeaderParams,
     GridSelectionModel
-} from "@mui/x-data-grid";
-import {useState} from "react";
-import TableToolbar from "./toolbar/TableToolbar";
-import TableFooter from "./footer/TableFooter";
-import ApplicationNoRowsOverlay from "./overlay/ApplicationNoRowsOverlay";
+} from "@mui/x-data-grid"
+import {useState} from "react"
+import TableToolbar from "./toolbar/TableToolbar"
+import TableFooter from "./footer/TableFooter"
+import ApplicationNoRowsOverlay from "./overlay/ApplicationNoRowsOverlay"
 
 const renderHeader =  (params: GridColumnHeaderParams) => {
     return <strong>{params.colDef.headerName}</strong>
@@ -24,7 +24,7 @@ export interface ApplicationTableProps extends DataGridProps {
 
 const ApplicationTable = (props: ApplicationTableProps) => {
 
-    const [selectedRecords, setSelectedRecords] = useState<typeof props.rows>([]);
+    const [selectedRecords, setSelectedRecords] = useState<typeof props.rows>([])
 
     const onSelectionModelChange = (selectionModel: GridSelectionModel,
                                     details: GridCallbackDetails) => {
@@ -69,7 +69,7 @@ const ApplicationTable = (props: ApplicationTableProps) => {
                 rowsPerPageOptions={[pageSize]}
                 autoPageSize={false}
                 onSelectionModelChange={onSelectionModelChange}
-                sx={{...props.sx, background: 'rgba(255, 255, 255, .2)'}}
+                sx={{...props.sx, background: 'var(--color-table-bg)'}}
             />
         </>
 

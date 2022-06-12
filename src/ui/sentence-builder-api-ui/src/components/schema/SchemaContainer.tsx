@@ -1,16 +1,16 @@
-import {useDeleteSchemaMutation, useGetAllSchemasQuery} from "../../api/schema-api-slice";
-import {SchemaResponse} from "../../types/schema";
-import {GridColDef, GridRowsProp} from "@mui/x-data-grid";
-import ApplicationTableWrapper from "../shared/table/ApplicationTableWrapper";
-import SchemaForm from "./SchemaForm";
-import {WordTypeProps} from "../word-type/types";
+import {useDeleteSchemaMutation, useGetAllSchemasQuery} from "../../api/schema-api-slice"
+import {SchemaResponse} from "../../types/schema"
+import {GridColDef, GridRowsProp} from "@mui/x-data-grid"
+import ApplicationTableWrapper from "../shared/table/ApplicationTableWrapper"
+import SchemaForm from "./SchemaForm"
+import {WordTypeProps} from "../word-type/types"
 
 
 const formatInputSchemas = (data?: SchemaResponse): GridRowsProp => {
     return data!.map(singleSchema => ({
         id: singleSchema.sentenceSchemaId,
         content: singleSchema.words.map(word => word.wordTypeName).join(' ')
-    }));
+    }))
 }
 
 const columns: GridColDef[] = [
@@ -30,12 +30,11 @@ const SchemaContainer = ({ wordTypes }: SchemaContainerProps) => {
     const [deleteSchema] = useDeleteSchemaMutation()
 
     const removeRecordsCallback = (records: {id: number, content: string}[]) => {
-        console.log(records)
         records.forEach(record => deleteSchema(record.id))
     }
 
     return (
-        <div>
+        <section>
             {
                 <ApplicationTableWrapper
                     columns={columns}
@@ -52,7 +51,7 @@ const SchemaContainer = ({ wordTypes }: SchemaContainerProps) => {
                     }}
                 />
             }
-        </div>
+        </section>
     )
 }
 

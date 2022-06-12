@@ -1,6 +1,6 @@
 
 export type WordList = {
-    wordResponseList: Word[]
+    wordResponseList?: Word[]
 }
 
 export type Word = {

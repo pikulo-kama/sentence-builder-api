@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&family=Josefin+Sans:wght@300;600&display=swap');
 
 :root {
-  --color-bg: linear-gradient(205deg, var(--color-burgundy) 0%, var(--color-yellow-red) 49%, var(--color-ochre) 100%);
-  --color-white: #fdfdfd;
-  --color-black: #010101;
-  --color-header: var(--color-yellow-red);
   --width-lg: calc(100% - .5rem);
   --default-transition: all .3s 0s ease-in-out;
   --shadow-transition: box-shadow 0.3s 0s linear;
+
+  --color-bg: linear-gradient(205deg, var(--color-burgundy) 0%,
+                                      var(--color-yellow-red) 49%,
+                                      var(--color-ochre) 100%);
+  --color-white: #fdfdfd;
+  --color-black: #010101;
+  --color-header: var(--color-yellow-red);
+  --color-table-bg: rgba(255, 255, 255, .2);
+  --color-form-bg: rgba(255, 255, 255, .5);
+  --color-form-border: rgba(255, 255, 255, .7);
 
   --color-burgundy: #780116;
   --color-yellow-red: #f7b538;
@@ -52,7 +58,6 @@ main {
 
 main .column {
   display: grid;
-  /*grid-template-rows: 60% calc(40% - .3rem);*/
   grid-template-rows: repeat(2, 1fr);
   gap: .3rem;
 }
@@ -93,5 +98,4 @@ h2 {
   main {
     grid-template-columns: 1fr;
   }
-
 }

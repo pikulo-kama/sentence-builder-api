@@ -23,7 +23,7 @@ export const {
     logout
 } = authSlice.actions
 
-export const selectCurrentToken = (state: { auth: { token: any; }; }) => state.auth.token
+export const selectCurrentToken = (state: any) => state.auth.token
 
 export default authSlice.reducer
 

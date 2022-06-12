@@ -1,6 +1,6 @@
-import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
-import {WordTypeResponse} from "../../../types/word-type";
-import React from "react";
+import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material"
+import {WordTypeResponse} from "../../../types/word-type"
+import React from "react"
 import '../form/form-wrapper.css'
 
 interface WordTypeSelectProps {

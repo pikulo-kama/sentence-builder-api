@@ -3,7 +3,6 @@ import ApplicationTableWrapper from "../shared/table/ApplicationTableWrapper";
 import WordTypeForm from "./WordTypeForm";
 import {WordTypeProps} from "./types";
 import {useDeleteWordTypeMutation} from "../../api/word-type-api-slice";
-import {Word} from "../../types/word";
 import {WordTypeResponse} from "../../types/word-type";
 
 
@@ -23,12 +22,11 @@ const WordTypeContainer = ({ wordTypes, isLoading }: WordTypeContainerProps) => 
     const [deleteWordType] = useDeleteWordTypeMutation()
 
     const removeRecordsCallback = (records: WordTypeResponse) => {
-        console.log(records)
         records.forEach(record => deleteWordType(record.wordTypeId))
     }
 
     return (
-        <div className="word-type__container">
+        <section>
             <ApplicationTableWrapper
                 columns={columns}
                 rows={wordTypes}
@@ -41,7 +39,7 @@ const WordTypeContainer = ({ wordTypes, isLoading }: WordTypeContainerProps) => 
                 removeRecordsCallback={removeRecordsCallback}
                 form={WordTypeForm}
             />
-        </div>
+        </section>
     )
 }
 

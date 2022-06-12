@@ -1,10 +1,10 @@
-import {useState} from "react";
-import PrimaryButton from "../shared/button/PrimaryButton";
-import {useNavigate} from "react-router-dom";
-import {logout} from "../../features/auth/auth-slice";
-import {useDispatch} from "react-redux";
+import {useState} from "react"
+import PrimaryButton from "../shared/button/PrimaryButton"
+import {useNavigate} from "react-router-dom"
+import {logout} from "../../features/auth/auth-slice"
+import {useDispatch} from "react-redux"
 import './logout.css'
-import SecondaryButton from "../shared/button/SecondaryButton";
+import SecondaryButton from "../shared/button/SecondaryButton"
 
 
 const Logout = () => {
