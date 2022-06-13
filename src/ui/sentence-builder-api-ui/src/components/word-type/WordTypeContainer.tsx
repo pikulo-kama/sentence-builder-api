@@ -1,9 +1,9 @@
-import {GridColDef} from "@mui/x-data-grid";
-import ApplicationTableWrapper from "../shared/table/ApplicationTableWrapper";
-import WordTypeForm from "./WordTypeForm";
-import {WordTypeProps} from "./types";
-import {useDeleteWordTypeMutation} from "../../api/word-type-api-slice";
-import {WordTypeResponse} from "../../types/word-type";
+import {GridColDef} from "@mui/x-data-grid"
+import ApplicationTableWrapper from "../shared/table/ApplicationTableWrapper"
+import WordTypeForm from "./WordTypeForm"
+import {WordTypeProps} from "./types"
+import {useDeleteWordTypeMutation} from "../../api/word-type-api-slice"
+import {WordTypeResponse} from "../../types/word-type"
 
 
 const columns: GridColDef[] = [
@@ -12,7 +12,7 @@ const columns: GridColDef[] = [
         headerName: 'Відповідає на..',
         width: 150
     }
-];
+]
 
 interface WordTypeContainerProps extends WordTypeProps {}
 

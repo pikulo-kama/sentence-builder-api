@@ -1,8 +1,8 @@
-import Header from "./components/header/Header";
-import WordContainer from "./components/word/WordContainer";
-import SchemaContainer from "./components/schema/SchemaContainer";
-import WordTypeContainer from "./components/word-type/WordTypeContainer";
-import {useGetAllWordTypesQuery} from "./api/word-type-api-slice";
+import Header from "./components/header/Header"
+import WordContainer from "./components/word/WordContainer"
+import SchemaContainer from "./components/schema/SchemaContainer"
+import WordTypeContainer from "./components/word-type/WordTypeContainer"
+import {useGetAllWordTypesQuery} from "./api/word-type-api-slice"
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
                 </div>
             </main>
         </>
-    );
+    )
 }
 
-export default App;
+export default App

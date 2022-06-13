@@ -1,6 +1,6 @@
-import {sentenceApi} from "./sentence-api";
-import {SchemaForm, SchemaResponse} from "../types/schema";
-import {Response} from "../types/response";
+import {sentenceApi} from "./sentence-api"
+import {SchemaForm, SchemaResponse} from "../types/schema"
+import {Response} from "../types/response"
 
 
 export const schemaTag = 'Schemas'

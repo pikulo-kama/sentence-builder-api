@@ -1,4 +1,4 @@
-import {WordTypeResponse} from "../../types/word-type";
+import {WordTypeResponse} from "../../types/word-type"
 
 export interface WordTypeProps {
     wordTypes: WordTypeResponse

@@ -1,16 +1,26 @@
 
+/**
+ * Response format of word types from the server.
+* */
 export type WordTypeResponse = WordType[]
 
+/**
+ * Single object that represents word type
+ * */
 export type WordType = {
     wordTypeId: number
     wordTypeName: string
 }
 
-export type NewWordType = {
+/**
+ * Object used during creation of new word type
+* */
+export type NewWordTypeForm = {
     wordTypeName: string
 }
 
-export const defaultNewWordType: NewWordType = {
+// Default objects, used as default value in useState hook
+export const defaultWordTypeForm: NewWordTypeForm = {
     wordTypeName: ''
 }
 

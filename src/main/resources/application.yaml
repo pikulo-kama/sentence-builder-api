@@ -5,7 +5,7 @@ spring:
     password: ${SENTENCE_BUILDER_API_POSTGRES_PASS}
   data:
     mongodb:
-      uri: ${SENTENCE_BUILDER_MONGODB_URL}
+      uri: ${SENTENCE_BUILDER_API_MONGODB_URL}
 
 admin:
   username: ${SENTENCE_BUILDER_API_USERNAME}
@@ -16,8 +16,8 @@ jwt:
   lifetime: 24
 
 api:
-  private: /api/v2
-  public: /api/v1
+  private: ${SENTENCE_BUILDER_API_PRIVATE_PATH}
+  public: ${SENTENCE_BUILDER_API_PUBLIC_PATH}
 
 cors:
   origins: ${SENTENCE_BUILDER_API_ORIGINS}

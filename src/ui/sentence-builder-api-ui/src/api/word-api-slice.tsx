@@ -1,6 +1,6 @@
-import {sentenceApi} from "./sentence-api";
-import {Response} from "../types/response";
-import {WordDeleteForm, WordFormCollection, WordList} from "../types/word";
+import {sentenceApi} from "./sentence-api"
+import {Response} from "../types/response"
+import {WordDeleteForm, WordFormCollection, WordList} from "../types/word"
 
 
 export const wordTag = 'Words'

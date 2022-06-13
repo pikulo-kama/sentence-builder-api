@@ -1,6 +1,6 @@
-import {sentenceApi} from "./sentence-api";
-import {LoginForm, LoginResponse} from "../types/auth";
-import {Response} from "../types/response";
+import {sentenceApi} from "./sentence-api"
+import {LoginForm, LoginResponse} from "../types/auth"
+import {Response} from "../types/response"
 
 
 export const authApiSlice = sentenceApi.injectEndpoints({

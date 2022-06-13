@@ -1,8 +1,8 @@
-import {sentenceApi} from "./sentence-api";
-import {NewWordType, WordType, WordTypeResponse} from "../types/word-type";
-import {Response} from "../types/response";
-import {wordTag} from "./word-api-slice";
-import {schemaTag} from "./schema-api-slice";
+import {sentenceApi} from "./sentence-api"
+import {NewWordTypeForm, WordType, WordTypeResponse} from "../types/word-type"
+import {Response} from "../types/response"
+import {wordTag} from "./word-api-slice"
+import {schemaTag} from "./schema-api-slice"
 
 export const wordTypeTag = 'Word Types'
 
@@ -12,7 +12,7 @@ export const wordTypeApiSlice = sentenceApi.injectEndpoints({
             query: () => '/words/types',
             providesTags: [wordTypeTag]
         }),
-        createWordType: builder.mutation<WordType, NewWordType>({
+        createWordType: builder.mutation<WordType, NewWordTypeForm>({
             query: body => ({
                 url: '/words/types/create',
                 method: 'POST',

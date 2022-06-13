@@ -1,10 +1,11 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react"
+import {REACT_APP_BACKEND_URL} from "../constants"
 
 
 export const sentenceApi = createApi({
     reducerPath: 'sentenceApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:9019/api/v2',
+        baseUrl: REACT_APP_BACKEND_URL,
         credentials: 'include',
         prepareHeaders: (headers, { getState }) => {
             // @ts-ignore

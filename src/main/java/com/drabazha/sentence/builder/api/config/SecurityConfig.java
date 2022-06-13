@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -22,6 +21,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+import static java.lang.String.format;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpHeaders.CACHE_CONTROL;
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
@@ -44,13 +44,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private List<String> allowedMethods;
 
     private final JwtAuthenticationEntryPoint authenticationEntryPoint;
+    private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
     private final JwtRequestFilter requestFilter;
 
     public SecurityConfig(JwtAuthenticationEntryPoint authenticationEntryPoint,
+                          PasswordEncoder passwordEncoder,
                           UserDetailsService userDetailsService,
                           JwtRequestFilter requestFilter) {
         this.authenticationEntryPoint = authenticationEntryPoint;
+        this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
         this.requestFilter = requestFilter;
     }
@@ -60,8 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                         .authorizeRequests()
                         .antMatchers(
-                                publicApiPath + "/**",
-                                privateApiPath + "/auth/login"
+                                format("%s/**", publicApiPath),
+                                format("%s/auth/login", privateApiPath)
                         ).permitAll()
                         .anyRequest().authenticated().and()
                         .exceptionHandling()
@@ -74,12 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(getPasswordEncoder());
-    }
-
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return new BCryptPasswordEncoder();
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 
     @Bean
@@ -98,7 +96,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.setAllowedHeaders(List.of(AUTHORIZATION, CACHE_CONTROL, CONTENT_TYPE));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration(privateApiPath + "/**", configuration);
+        source.registerCorsConfiguration(format("%s/**", privateApiPath), configuration);
         return source;
     }
 }

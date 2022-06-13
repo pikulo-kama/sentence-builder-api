@@ -1,9 +1,9 @@
-import {Button, TextField} from "@mui/material";
+import {Button, TextField} from "@mui/material"
 import '../shared/form/form-wrapper.css'
-import React, {useState} from "react";
-import {defaultWordType, WordType, WordTypeResponse} from "../../types/word-type";
-import WordTypeSelect from "../shared/select/WordTypeSelect";
-import {useCreateWordMutation} from "../../api/word-api-slice";
+import React, {useState} from "react"
+import {defaultWordType, WordType, WordTypeResponse} from "../../types/word-type"
+import WordTypeSelect from "../shared/select/WordTypeSelect"
+import {useCreateWordMutation} from "../../api/word-api-slice"
 
 
 interface WordFormProps {

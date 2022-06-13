@@ -1,5 +1,5 @@
-import {isRejectedWithValue, Middleware, MiddlewareAPI} from "@reduxjs/toolkit";
-import {logout} from "./auth-slice";
+import {isRejectedWithValue, Middleware, MiddlewareAPI} from "@reduxjs/toolkit"
+import {logout} from "./auth-slice"
 
 const UNAUTHORIZED = 401
 

@@ -1,5 +1,5 @@
-import {FaTrashAlt} from "react-icons/fa";
-import {IconButton, styled} from "@mui/material";
+import {FaTrashAlt} from "react-icons/fa"
+import {IconButton, styled} from "@mui/material"
 import './table-toolbar.css'
 
 

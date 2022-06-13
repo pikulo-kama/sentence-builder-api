@@ -1,6 +1,6 @@
 import './table-footer.css'
-import {GridPagination} from "@mui/x-data-grid";
-import PrimaryButton from "../../button/PrimaryButton";
+import {GridPagination} from "@mui/x-data-grid"
+import PrimaryButton from "../../button/PrimaryButton"
 
 interface TableFooterProps {
     addBtnLabel: string,
