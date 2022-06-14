@@ -13,5 +13,7 @@ public class WordResponse {
 
     private String content;
 
-    private String wordGender;
+    private Long wordTypeId;
+
+    private String wordTypeName;
 }

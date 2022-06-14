@@ -13,5 +13,5 @@ public class WordForm {
 
     private String content;
 
-    private String wordGender;
+    private Long wordTypeId;
 }

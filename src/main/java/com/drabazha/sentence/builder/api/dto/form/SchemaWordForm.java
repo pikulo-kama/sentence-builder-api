@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SchemaWordForm {
 
-    private String speechPart;
-
-    private String wordGender;
+    private Long wordTypeId;
 
     private Integer wordOrder;
 }
