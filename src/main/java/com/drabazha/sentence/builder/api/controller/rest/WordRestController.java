@@ -2,11 +2,11 @@ package com.drabazha.sentence.builder.api.controller.rest;
 
 import com.drabazha.sentence.builder.api.dto.form.WordCollectionForm;
 import com.drabazha.sentence.builder.api.dto.form.WordDeleteForm;
+import com.drabazha.sentence.builder.api.dto.response.WordGroupCollectionResponse;
 import com.drabazha.sentence.builder.api.exception.UserResponse;
 import com.drabazha.sentence.builder.api.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("${api.private}/words")
+@RequestMapping("/api/v2/words")
 public class WordRestController {
 
     private final WordService wordService;
@@ -25,8 +25,8 @@ public class WordRestController {
     }
 
     @GetMapping
-    public UserResponse getWordGroupedCollection() {
-        return wordService.findAll();
+    public WordGroupCollectionResponse getWordGroupedCollection() {
+        return wordService.findAllAndGroup();
     }
 
     @PostMapping("/create")
@@ -34,7 +34,7 @@ public class WordRestController {
         return wordService.create(wordCollectionForm);
     }
 
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     public UserResponse delete(@RequestBody @Validated WordDeleteForm wordDeleteForm) {
         return wordService.delete(wordDeleteForm);
     }

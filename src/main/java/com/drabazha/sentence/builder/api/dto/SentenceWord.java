@@ -1,17 +1,15 @@
-package com.drabazha.sentence.builder.api.dto.form;
+package com.drabazha.sentence.builder.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
-public class WordForm {
+public class SentenceWord {
 
+    @Getter
     private String content;
-
-    private String wordGender;
 }

@@ -5,13 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,7 +25,7 @@ public class SchemaWord {
 
     private Integer wordOrder;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "word_type_id")
-    private SchemaWordType schemaWordType;
+    private String speechPart;
+
+    private String wordGender;
 }

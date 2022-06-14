@@ -1,8 +1,5 @@
 package com.drabazha.sentence.builder.api.domain.nosql;
 
-import com.drabazha.sentence.builder.api.domain.sql.SchemaWordType;
-import com.drabazha.sentence.builder.api.dto.response.WordResponse;
-import com.drabazha.sentence.builder.api.exception.RestException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import static com.drabazha.sentence.builder.api.dto.WordMetadata.NO_GENDER;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,19 +19,11 @@ public class Word {
     @Id
     private String content;
 
-    private Long wordTypeId;
+    private String speechPart;
 
-    public WordResponse mapToResponse(List<SchemaWordType> wordTypes) {
-        return WordResponse.builder()
-                .content(this.getContent())
-                .wordTypeId(this.getWordTypeId())
-                .wordTypeName(wordTypes.stream()
-                        .filter(wordType ->
-                                wordType.getSchemaWordTypeId()
-                                        .equals(this.getWordTypeId()))
-                        .findFirst().orElseThrow(() ->
-                                new RestException(String.format("Word '%s' corrupted", getContent())))
-                        .getSchemaWordTypeName())
-                .build();
+    private String wordGender;
+
+    public Boolean hasGender() {
+        return !NO_GENDER.equals(wordGender);
     }
 }

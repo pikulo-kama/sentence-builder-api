@@ -1,12 +1,13 @@
 package com.drabazha.sentence.builder.api.service;
 
 import com.drabazha.sentence.builder.api.dto.Dictionary;
-import com.drabazha.sentence.builder.api.dto.SentenceBuilder;
+import com.drabazha.sentence.builder.api.dto.SentenceSchemaIterator;
 import com.drabazha.sentence.builder.api.dto.response.SentenceCollectionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -17,8 +18,7 @@ public class SentenceGeneratorServiceImpl implements SentenceGeneratorService {
     private final WordService wordService;
 
     @Autowired
-    public SentenceGeneratorServiceImpl(SentenceSchemaService sentenceSchemaService,
-                                        WordService wordService) {
+    public SentenceGeneratorServiceImpl(SentenceSchemaService sentenceSchemaService, WordService wordService) {
         this.sentenceSchemaService = sentenceSchemaService;
         this.wordService = wordService;
     }
@@ -35,9 +35,12 @@ public class SentenceGeneratorServiceImpl implements SentenceGeneratorService {
     @Override
     public SentenceCollectionResponse generateSentences(Integer sentenceCount, Long schemaId) {
         Dictionary dictionary = wordService.createDictionary();
-        SentenceBuilder schemaIterator = sentenceSchemaService.getSchema(schemaId);
+        SentenceSchemaIterator schemaIterator = sentenceSchemaService.getSchema(schemaId);
         List<String> sentences = IntStream.range(0, sentenceCount).boxed()
-                .map(i -> schemaIterator.generateSentence(dictionary).toString())
+                .map(i -> {
+                    schemaIterator.resetCursor();
+                    return schemaIterator.generateSentence(dictionary).toString();
+                })
                 .collect(Collectors.toList());
         return new SentenceCollectionResponse(sentences);
     }

@@ -6,18 +6,18 @@ import com.drabazha.sentence.builder.api.exception.UserResponse;
 import com.drabazha.sentence.builder.api.service.SentenceSchemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("${api.private}/schemas")
+@RequestMapping("/api/v2/schemas")
 public class SentenceSchemaRestController {
 
     private final SentenceSchemaService sentenceSchemaService;
@@ -33,11 +33,11 @@ public class SentenceSchemaRestController {
     }
 
     @PostMapping("/create")
-    public UserResponse create(@Validated @RequestBody SchemaForm schemaForm) {
+    public UserResponse create(@RequestBody @Validated SchemaForm schemaForm) {
         return sentenceSchemaService.createSchema(schemaForm);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public UserResponse delete(@PathVariable("id") Long sentenceSchemaId) {
         return sentenceSchemaService.deleteSchema(sentenceSchemaId);
     }

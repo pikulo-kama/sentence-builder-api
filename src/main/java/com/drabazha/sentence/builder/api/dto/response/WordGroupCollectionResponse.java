@@ -1,4 +1,4 @@
-package com.drabazha.sentence.builder.api.dto.form;
+package com.drabazha.sentence.builder.api.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-public class WordCollectionForm {
+public class WordGroupCollectionResponse {
 
-    private String speechPart;
-
-    private List<WordForm> words;
+    private List<WordGroupResponse> wordSets;
 }

@@ -8,7 +8,7 @@ import java.util.Map;
 public class RestException extends RuntimeException{
 
     @Getter
-    private final Map<String, Object> responseData;
+    private Map<String, Object> responseData;
 
     public RestException(String message) {
         this(message, Collections.emptyMap());

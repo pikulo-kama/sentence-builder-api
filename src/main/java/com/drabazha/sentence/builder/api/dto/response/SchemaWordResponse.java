@@ -1,19 +1,17 @@
-package com.drabazha.sentence.builder.api.dto.form;
+package com.drabazha.sentence.builder.api.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class WordCollectionForm {
+public class SchemaWordResponse {
 
     private String speechPart;
 
-    private List<WordForm> words;
+    private String wordGender;
 }

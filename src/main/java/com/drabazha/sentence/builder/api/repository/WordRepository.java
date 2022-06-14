@@ -6,6 +6,4 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface WordRepository extends MongoRepository<Word, String> {
 
     void deleteByContent(String content);
-
-    void deleteByWordTypeId(Long wordTypeId);
 }
