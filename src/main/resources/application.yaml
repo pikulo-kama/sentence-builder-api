@@ -5,15 +5,20 @@ spring:
     password: ${SENTENCE_BUILDER_API_POSTGRES_PASS}
   data:
     mongodb:
-      uri: ${SENTENCE_BUILDER_MONGODB_URL}
-
-  freemarker:
-    suffix: .ftl
-    template-loader-path: classpath:/templates/
-  web:
-    resources:
-      static-locations: classpath:/static
+      uri: ${SENTENCE_BUILDER_API_MONGODB_URL}
 
 admin:
   username: ${SENTENCE_BUILDER_API_USERNAME}
   password: ${SENTENCE_BUILDER_API_PASSWORD}
+
+jwt:
+  secret: ${SENTENCE_BUILDER_API_JWT_SECRET}
+  lifetime: 24
+
+api:
+  private: ${SENTENCE_BUILDER_API_PRIVATE_PATH}
+  public: ${SENTENCE_BUILDER_API_PUBLIC_PATH}
+
+cors:
+  origins: ${SENTENCE_BUILDER_API_ORIGINS}
+  methods: GET, POST, DELETE, OPTIONS

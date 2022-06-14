@@ -15,5 +15,5 @@ public class SentenceSchemaResponse {
 
     private Long sentenceSchemaId;
 
-    private List<SchemaWordResponse> words;
+    private List<WordTypeResponse> words;
 }
