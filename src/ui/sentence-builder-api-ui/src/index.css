@@ -4,6 +4,7 @@
   --width-lg: calc(100% - .5rem);
   --default-transition: all .3s 0s ease-in-out;
   --shadow-transition: box-shadow 0.3s 0s linear;
+  --header-height: 3.5rem;
 
   --color-bg: linear-gradient(205deg, var(--color-burgundy) 0%,
                                       var(--color-yellow-red) 49%,
@@ -53,7 +54,7 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: .3rem;
   padding: .5rem 0 .3rem;
-  min-height: calc(100vh - 3.5rem);
+  min-height: calc(100vh - var(--header-height));
 }
 
 main .column {
@@ -92,6 +93,18 @@ h2 {
   border-color: var(--color-white);
   background: transparent;
   color: var(--color-white);
+}
+
+.lang-icon {
+  border-radius: 50%;
+  width: 2rem;
+  border: 2px solid var(--color-white);
+  transition: var(--default-transition);
+}
+
+.lang-icon:hover {
+  cursor: pointer;
+  border-color: var(--color-flame);
 }
 
 @media screen and (max-width: 600px){

@@ -35,8 +35,8 @@ const ApplicationTable = (props: ApplicationTableProps) => {
 
     const {
         pageSize = 5,
-        tableName = 'Table',
-        addBtnLabel = 'Add',
+        tableName = '',
+        addBtnLabel = '',
         addBtnCallback = () => {}
     } = props
 

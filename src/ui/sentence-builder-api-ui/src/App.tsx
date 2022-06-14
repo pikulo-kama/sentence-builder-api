@@ -4,7 +4,7 @@ import SchemaContainer from "./components/schema/SchemaContainer"
 import WordTypeContainer from "./components/word-type/WordTypeContainer"
 import {useGetAllWordTypesQuery} from "./api/word-type-api-slice"
 
-function App() {
+const App = () => {
 
     const {data: wordTypes, isLoading} = useGetAllWordTypesQuery()
 

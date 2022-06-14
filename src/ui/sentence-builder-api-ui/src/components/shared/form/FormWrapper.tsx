@@ -1,5 +1,6 @@
 import PrimaryButton from "../button/PrimaryButton"
 import './form-wrapper.css'
+import {Translate} from "react-i18nify";
 
 interface FormWrapperProps {
     closeFormCallback?: () => void
@@ -25,7 +26,7 @@ const FormWrapper = (props: FormWrapperProps) => {
                     margin: '.3rem 0 0 .3rem'
                 }}
             >
-                Back
+                <Translate value='general.close_form_button' />
             </PrimaryButton>
             <Form {...formProps} />
         </div>

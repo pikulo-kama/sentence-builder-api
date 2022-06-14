@@ -4,6 +4,7 @@ import {GridColDef, GridRowsProp} from "@mui/x-data-grid"
 import ApplicationTableWrapper from "../shared/table/ApplicationTableWrapper"
 import SchemaForm from "./SchemaForm"
 import {WordTypeProps} from "../word-type/types"
+import {I18n, Translate, translate} from "react-i18nify";
 
 
 const formatInputSchemas = (data?: SchemaResponse): GridRowsProp => {
@@ -13,35 +14,37 @@ const formatInputSchemas = (data?: SchemaResponse): GridRowsProp => {
     }))
 }
 
-const columns: GridColDef[] = [
-    {
-        field: 'content',
-        headerName: 'Схема побудови',
-        width: 400
-    }
-]
-
 interface SchemaContainerProps extends WordTypeProps {
 }
 
-const SchemaContainer = ({ wordTypes }: SchemaContainerProps) => {
+const SchemaContainer = ({wordTypes}: SchemaContainerProps) => {
 
     const {data: schemas, isLoading} = useGetAllSchemasQuery()
     const [deleteSchema] = useDeleteSchemaMutation()
 
-    const removeRecordsCallback = (records: {id: number, content: string}[]) => {
+    const removeRecordsCallback = (records: { id: number, content: string }[]) => {
         records.forEach(record => deleteSchema(record.id))
     }
 
+    const columns: GridColDef[] = [
+        {
+            field: 'content',
+            // @ts-ignore
+            headerName: <Translate value='schema.col_one_name' />,
+            width: 400
+        }
+    ]
+
     return (
-        <section>
+        // @ts-ignore
+        <I18n render={() => <section>
             {
                 <ApplicationTableWrapper
                     columns={columns}
                     rows={schemas!}
                     rowsFormatter={formatInputSchemas}
-                    tableName='Schemas'
-                    addBtnLabel='Create Schema'
+                    tableName={translate('schema.table_header')}
+                    addBtnLabel={translate('schema.open_form_button')}
                     uniqueFieldName='id'
                     isLoading={isLoading}
                     form={SchemaForm}
@@ -52,6 +55,7 @@ const SchemaContainer = ({ wordTypes }: SchemaContainerProps) => {
                 />
             }
         </section>
+        } />
     )
 }
 

@@ -5,6 +5,7 @@ import {logout} from "../../features/auth/auth-slice"
 import {useDispatch} from "react-redux"
 import './logout.css'
 import SecondaryButton from "../shared/button/SecondaryButton"
+import {Translate} from "react-i18nify";
 
 
 const Logout = () => {
@@ -26,17 +27,17 @@ const Logout = () => {
                     <SecondaryButton
                         onClick={() => setShowConfirm(true)}
                     >
-                        Log out
+                        <Translate value='logout.logout_button' />
                     </SecondaryButton> :
                     <div className='logout__container'>
-                        <h3>Do you really want to log out?</h3>
+                        <h3><Translate value='logout.logout_text' /></h3>
                         <div className="logout__buttons">
                             <PrimaryButton
                                 onClick={handleLogout}
-                            >Yes</PrimaryButton>
+                            ><Translate value='logout.logout_confirm_yes' /></PrimaryButton>
                             <SecondaryButton
                                 onClick={() => setShowConfirm(false)}
-                            >No</SecondaryButton>
+                            ><Translate value='logout.logout_confirm_no' /></SecondaryButton>
                         </div>
                     </div>
             }

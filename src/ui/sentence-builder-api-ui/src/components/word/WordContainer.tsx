@@ -4,20 +4,8 @@ import ApplicationTableWrapper from "../shared/table/ApplicationTableWrapper"
 import WordForm from "./WordForm"
 import {Word} from "../../types/word"
 import {WordTypeProps} from "../word-type/types"
+import {I18n, Translate, translate} from "react-i18nify";
 
-
-const columns: GridColDef[] = [
-    {
-        field: 'content',
-        editable: true,
-        headerName: 'Слово',
-    },
-    {
-        field: 'wordTypeName',
-        headerName: 'Відповідає на..',
-        minWidth: 140
-    }
-]
 
 interface WordContainerProps extends WordTypeProps {
 }
@@ -31,27 +19,45 @@ const WordContainer = ({ wordTypes, isLoading }: WordContainerProps) => {
         records.forEach(record => deleteWord({wordContent: record.content}))
     }
 
+    const columns: GridColDef[] = [
+        {
+            field: 'content',
+            editable: true,
+            // @ts-ignore
+            headerName: <Translate value='word.col_one_name' />,
+        },
+        {
+            field: 'wordTypeName',
+            // @ts-ignore
+            headerName: <Translate value='word.col_two_name' />,
+            minWidth: 140
+        }
+    ]
+
     return (
-        <section>
-            {
-                <ApplicationTableWrapper
-                    columns={columns}
-                    rows={words?.responseData?.wordResponseList || []}
-                    getRowId={(row: any) => row.content}
-                    pageSize={10}
-                    tableName='Words'
-                    addBtnLabel='Create New Word'
-                    uniqueFieldName='content'
-                    isLoading={wordIsLoading}
-                    form={WordForm}
-                    removeRecordsCallback={removeRecordsCallback}
-                    formProps={{
-                        wordTypes: wordTypes,
-                        isLoading: isLoading
-                    }}
-                />
-            }
-        </section>
+        // @ts-ignore
+        <I18n render={() =>
+            <section>
+                {
+                    <ApplicationTableWrapper
+                        columns={columns}
+                        rows={words?.responseData?.wordResponseList || []}
+                        getRowId={(row: any) => row.content}
+                        pageSize={10}
+                        tableName={translate('word.table_header')}
+                        addBtnLabel={translate('word.open_form_button')}
+                        uniqueFieldName='content'
+                        isLoading={wordIsLoading}
+                        form={WordForm}
+                        removeRecordsCallback={removeRecordsCallback}
+                        formProps={{
+                            wordTypes: wordTypes,
+                            isLoading: isLoading
+                        }}
+                    />
+                }
+            </section>
+        } />
     )
 }
 

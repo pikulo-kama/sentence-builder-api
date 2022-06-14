@@ -10,6 +10,8 @@
  * */
 export type Response<T> = {
     message: string
-    responseType: 'ERROR' | 'SUCCESS'
+    responseType: ResponseType
     responseData: T
 }
+
+export type ResponseType = 'ERROR' | 'SUCCESS'

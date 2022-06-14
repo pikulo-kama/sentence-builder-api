@@ -12,7 +12,7 @@ export const wordTypeApiSlice = sentenceApi.injectEndpoints({
             query: () => '/words/types',
             providesTags: [wordTypeTag]
         }),
-        createWordType: builder.mutation<WordType, NewWordTypeForm>({
+        createWordType: builder.mutation<Response<void>, NewWordTypeForm>({
             query: body => ({
                 url: '/words/types/create',
                 method: 'POST',

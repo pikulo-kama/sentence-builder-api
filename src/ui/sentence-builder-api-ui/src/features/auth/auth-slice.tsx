@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
-import {deleteTokenFromCookies, loadTokenFromCookies, saveTokenToCookies} from "./cookies"
+import {deleteTokenFromCookies, loadTokenFromCookies, saveTokenToCookies} from "../../util/cookies"
 
 
 const authSlice = createSlice({
