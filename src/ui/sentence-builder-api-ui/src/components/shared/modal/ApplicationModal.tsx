@@ -24,7 +24,7 @@ const ApplicationModal = (props: ApplicationModalProps) => {
             }, REACT_APP_MODAL_SHOW_TIME);
             return () => clearTimeout(timer)
         }
-    }, [open])
+    }, [open, setOpen])
 
     if (!response) {
         return null

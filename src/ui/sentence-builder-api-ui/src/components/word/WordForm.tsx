@@ -6,7 +6,7 @@ import WordTypeSelect from "../shared/select/WordTypeSelect"
 import {useCreateWordMutation} from "../../api/word-api-slice"
 import {I18n, Translate, translate} from "react-i18nify";
 import ApplicationModal from "../shared/modal/ApplicationModal";
-import {Response, ResponseType} from "../../types/response";
+import {Response} from "../../types/response";
 
 
 interface WordFormProps {
