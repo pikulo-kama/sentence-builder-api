@@ -1,7 +1,7 @@
 import Header from "../header/Header"
 import {TextField} from "@mui/material"
 import './login.css'
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import PrimaryButton from "../shared/button/PrimaryButton"
 import {useLoginMutation} from "../../api/auth-api-slice"
 import {LoginForm} from "../../types/auth"
@@ -23,6 +23,18 @@ const Login = () => {
     const dispatch = useDispatch()
     const [login] = useLoginMutation()
 
+    useEffect(() => {
+        if (response?.responseType === 'ERROR') {
+            setOpen(true)
+        }
+        if (response?.responseType === 'SUCCESS') {
+            dispatch(setCredentials(response?.responseData))
+            setUsername('')
+            setPassword('')
+            navigate('/')
+        }
+    }, [response, setResponse])
+
     const handleLogin = async () => {
         const loginForm: LoginForm = {
             username,
@@ -30,17 +42,6 @@ const Login = () => {
         }
 
         setResponse(await login(loginForm).unwrap())
-
-        if (response?.responseType === 'ERROR') {
-            setOpen(true)
-            return
-        }
-
-        dispatch(setCredentials(response?.responseData))
-
-        setUsername('')
-        setPassword('')
-        navigate('/')
     }
 
     return (

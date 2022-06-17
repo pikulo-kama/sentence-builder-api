@@ -1,5 +1,5 @@
 import {sentenceApi} from "./sentence-api"
-import {NewWordTypeForm, WordType, WordTypeResponse} from "../types/word-type"
+import {NewWordTypeForm, WordTypeResponse} from "../types/word-type"
 import {Response} from "../types/response"
 import {wordTag} from "./word-api-slice"
 import {schemaTag} from "./schema-api-slice"

@@ -24,7 +24,7 @@ const Header = (props: HeaderProps) => {
                 ><Translate value='icon' iconClass='header__language-btn' /></button>
             </div>
             <div className="header__logo-box">
-                <img src="/logo.svg" />
+                <img src="/logo.svg" alt='Speak Out Logo' />
                 <h1><Translate value='header.logo' /></h1>
             </div>
             {

@@ -40,7 +40,7 @@ services:
       - sentence-builder
 
 
-# Data access layer
+# Data storage services
   mongo:
     container_name: sentence-builder-api-mongo-db
     ports:
