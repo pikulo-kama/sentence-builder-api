@@ -30,14 +30,6 @@ public interface SentenceSchemaService {
     SentenceBuilder getSchema(Long sentenceSchemaId);
 
     /**
-     Get random schema
-     *
-     * @return schema iterator that contains schema word metadata
-     * that should be used to generate sentence(Also responsible for building sentence)
-     */
-    SentenceBuilder getRandomSchema();
-
-    /**
      * Create new sentence schema
      *
      * @param schemaForm form used to create new schema

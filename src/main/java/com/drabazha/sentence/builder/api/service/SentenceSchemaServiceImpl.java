@@ -1,5 +1,6 @@
 package com.drabazha.sentence.builder.api.service;
 
+import com.drabazha.sentence.builder.api.cache.SentenceSchemaMetadataCache;
 import com.drabazha.sentence.builder.api.domain.sql.SchemaWord;
 import com.drabazha.sentence.builder.api.domain.sql.SchemaWordType;
 import com.drabazha.sentence.builder.api.domain.sql.SentenceSchema;
@@ -24,6 +25,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
+
+import static java.util.Objects.isNull;
 
 @Service
 public class SentenceSchemaServiceImpl implements SentenceSchemaService {
@@ -97,11 +100,16 @@ public class SentenceSchemaServiceImpl implements SentenceSchemaService {
 
     @Override
     public SentenceBuilder getSchema(Long sentenceSchemaId) {
-        return buildSchemaIterator(sentenceSchemaId);
+        return isNull(sentenceSchemaId) ? getRandomSchema() : buildSchemaIterator(sentenceSchemaId);
     }
 
-    @Override
-    public SentenceBuilder getRandomSchema() {
+    /**
+     Get random schema
+     *
+     * @return schema iterator that contains schema word metadata
+     * that should be used to generate sentence(Also responsible for building sentence)
+     */
+    private SentenceBuilder getRandomSchema() {
         List<com.drabazha.sentence.builder.api.domain.sql.SentenceSchema> allSchemas = sentenceSchemaRepository.findAll();
         if (allSchemas.isEmpty()) {
             throw new RestException("No schemas available");
@@ -119,16 +127,29 @@ public class SentenceSchemaServiceImpl implements SentenceSchemaService {
                 .collect(Collectors.toMap(SchemaWordType::getSchemaWordTypeId, wordType -> wordType));
     }
 
+    /**
+     * Used to get all words that are related to provided sentence schema.
+     *
+     *
+     * @param sentenceSchemaId ID of schema for which builder should be created
+     * @return sentence builder populated with schema words
+     * @throws RestException when there are no words present for provided schema
+     */
     private SentenceBuilder buildSchemaIterator(Long sentenceSchemaId) {
-        List<SchemaWord> schemaWords = schemaWordRepository.findSchemaWordsBySentenceSchemaIdOrderByWordOrder(sentenceSchemaId);
-        if (schemaWords.isEmpty()) {
-            throw new RestException("Schema doesn't exist");
-        }
-        List<WordMetadata> wordMetadata = schemaWords.stream()
-                .map(word -> new WordMetadata(word.getSchemaWordType().getSchemaWordTypeId()))
-                .collect(Collectors.toList());
 
-        return new SentenceBuilder(wordMetadata);
+        List<WordMetadata> metadata = SentenceSchemaMetadataCache.<List<WordMetadata>, Long>getInstance()
+                .getCachedObject(sentenceSchemaId, schemaId -> {
+
+                    List<SchemaWord> schemaWords = schemaWordRepository.findSchemaWordsBySentenceSchemaIdOrderByWordOrder(sentenceSchemaId);
+                    if (schemaWords.isEmpty()) {
+                        throw new RestException("Schema doesn't exist");
+                    }
+                    return schemaWords.stream()
+                            .map(word -> new WordMetadata(word.getSchemaWordType().getSchemaWordTypeId()))
+                            .collect(Collectors.toList());
+                });
+
+        return new SentenceBuilder(metadata);
     }
 
     private String obtainSchemaHash(List<SchemaWordForm> schemaWords) {
